@@ -16,6 +16,7 @@ import Logo from './src/assets/spacetime-logo.svg'
 import { styled } from 'nativewind'
 import { makeRedirectUri, useAuthRequest } from 'expo-auth-session'
 import { useEffect } from 'react'
+import { api } from './src/lib/api'
 
 const StyledStripes = styled(Stripes)
 
@@ -45,15 +46,22 @@ export default function App() {
   )
 
   useEffect(() => {
-    // ### Verify IP
-    // console.log(
-    //   makeRedirectUri({
-    //     scheme: 'spacetime',
-    //   }),
-    // )
-
     if (response?.type === 'success') {
+      console.log('Entrou')
+
       const { code } = response.params
+
+      api
+        .post('/register', {
+          code,
+        })
+        .then((res) => {
+          console.log(res)
+
+          const { token } = res.data
+          console.log('TOKEN:', token)
+        })
+        .catch((err) => console.log(err))
     }
   }, [response])
 

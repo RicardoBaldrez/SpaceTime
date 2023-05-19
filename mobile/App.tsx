@@ -1,3 +1,4 @@
+import * as SecureStore from 'expo-secure-store'
 import { StatusBar } from 'expo-status-bar'
 import { ImageBackground, View, Text, TouchableOpacity } from 'react-native'
 
@@ -59,7 +60,7 @@ export default function App() {
           console.log(res)
 
           const { token } = res.data
-          console.log('TOKEN:', token)
+          SecureStore.setItemAsync('token', token)
         })
         .catch((err) => console.log(err))
     }

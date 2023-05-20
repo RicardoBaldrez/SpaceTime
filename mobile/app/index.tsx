@@ -7,8 +7,6 @@ import { Text, TouchableOpacity, View } from 'react-native'
 import NLWLogo from '../src/assets/spacetime-logo.svg'
 import { api } from '../src/lib/api'
 
-// const StyledStripes = styled(Stripes)
-
 const discovery = {
   authorizationEndpoint: 'https://github.com/login/oauth/authorize',
   tokenEndpoint: 'https://github.com/login/oauth/access_token',

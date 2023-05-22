@@ -56,8 +56,8 @@ export default function Layout() {
         {/* Rotas de acordo com os nomes na pasta app */}
         {/* redireciona para próxima rota caso isUserAuth = true */}
         <Stack.Screen name="index" redirect={isUserAuth} />
-        <Stack.Screen name="new" />
         <Stack.Screen name="memories" />
+        <Stack.Screen name="new" />
       </Stack>
     </ImageBackground>
   )

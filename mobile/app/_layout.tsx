@@ -46,7 +46,7 @@ export default function Layout() {
       imageStyle={{ position: 'absolute', left: '-100%' }}
     >
       <StyledStripes className="absolute left-2" />
-      <StatusBar style="light" backgroundColor="#121215" translucent />
+      <StatusBar style="light" translucent />
       <Stack
         screenOptions={{
           headerShown: false,

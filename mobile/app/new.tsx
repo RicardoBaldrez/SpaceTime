@@ -11,14 +11,18 @@ import {
 } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
-import { Link } from 'expo-router'
+import { Link, useRouter } from 'expo-router'
 import Icon from '@expo/vector-icons/Feather'
 import * as ImagePicker from 'expo-image-picker'
+import * as SecureStore from 'expo-secure-store'
 
 import NLWLogo from '../src/assets/spacetime-logo.svg'
+import { api } from '../src/lib/api'
 
 export default function NewMemorie() {
   const { top, bottom } = useSafeAreaInsets()
+
+  const router = useRouter()
 
   const [content, setContent] = useState('')
   const [isPublic, setIsPublic] = useState(false)
@@ -37,14 +41,50 @@ export default function NewMemorie() {
     } catch (error) {
       console.log(error)
     }
-
-    // if (!result.canceled) {
-    //   setImage(result.assets[0].uri)
-    // }
   }
 
-  function handleCreateMemory() {
-    console.log(content, isPublic)
+  async function handleCreateMemory() {
+    const token = await SecureStore.getItemAsync('token')
+
+    let coverUrl = ''
+
+    if (preview) {
+      const uploadFormData = new FormData()
+
+      uploadFormData.append('file', {
+        uri: preview,
+        name: 'image.jpg',
+        type: 'image/jpg',
+      } as any)
+
+      console.log('chegou aqui')
+
+      const uploadResponse = await api.post('/uploads', uploadFormData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+
+      console.log(uploadResponse)
+
+      coverUrl = uploadResponse.data.fileUrl
+    }
+
+    await api.post(
+      '/memories',
+      {
+        content,
+        isPublic,
+        coverUrl,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    )
+
+    router.push('/memories')
   }
 
   return (
@@ -99,6 +139,7 @@ export default function NewMemorie() {
         <TextInput
           multiline
           value={content}
+          textAlignVertical="top"
           onChangeText={setContent}
           placeholderTextColor="#56565a"
           className="p-0 font-body text-lg text-gray-50"
@@ -106,8 +147,8 @@ export default function NewMemorie() {
         />
 
         <TouchableOpacity
-          onPress={handleCreateMemory}
           activeOpacity={0.7}
+          onPress={handleCreateMemory}
           className="mb-3 items-center self-end rounded-full bg-green-500 px-5 py-2"
         >
           <Text className="font-alt text-sm uppercase text-black">Salvar</Text>

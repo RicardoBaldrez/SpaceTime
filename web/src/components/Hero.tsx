@@ -1,7 +1,7 @@
+import Link from 'next/link'
 import Image from 'next/image'
 
 import Logo from '../assets/spacetime-logo.svg'
-import Link from 'next/link'
 
 export function Hero() {
   return (

@@ -29,10 +29,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${roboto.variable} ${baiJam.variable} bg-gray-900 font-sans text-gray-100`}
+        className={`${roboto.variable} ${baiJam.variable} overflow-x-hidden overflow-y-scroll bg-gray-900 font-sans text-gray-100`}
       >
-        <main className="grid min-h-screen grid-cols-2">
-          <div className="relative flex flex-col items-start justify-between overflow-hidden border-r border-white/10 bg-[url(../assets/bg-stars.svg)] bg-cover px-28 py-16">
+        <main className="" style={{ display: 'flex' }}>
+          <div className="fixed flex h-[100vh]  w-[50%] flex-col items-start justify-between border-r border-white/10 bg-[url(../assets/bg-stars.svg)] bg-cover px-28 py-16">
             {/** Blur */}
             <div className="absolute right-0 top-1/2 h-[288px] w-[526px] -translate-y-1/2 translate-x-1/2 rounded-full bg-purple-700 opacity-50 blur-full" />
 
@@ -44,7 +44,7 @@ export default function RootLayout({
             <Copyright />
           </div>
 
-          <div className="flex flex-col bg-[url(../assets/bg-stars.svg)] bg-cover p-16">
+          <div className="ml-[50%] flex h-[100vh] w-[100vh] flex-col bg-[url(../assets/bg-stars.svg)] bg-cover">
             {children}
           </div>
         </main>

@@ -31,13 +31,13 @@ export default function RootLayout({
       <body
         className={`${roboto.variable} ${baiJam.variable} overflow-x-hidden overflow-y-scroll bg-gray-900 font-sans text-gray-100`}
       >
-        <main className="" style={{ display: 'flex' }}>
-          <div className="fixed flex h-[100vh]  w-[50%] flex-col items-start justify-between border-r border-white/10 bg-[url(../assets/bg-stars.svg)] bg-cover px-28 py-16">
+        <main className="flex">
+          <div className="fixed flex h-[100vh]  w-[50%] flex-col items-start justify-between border-r border-white/10 bg-[url(../assets/bg-stars.svg)] bg-cover px-28 py-10">
             {/** Blur */}
             <div className="absolute right-0 top-1/2 h-[288px] w-[526px] -translate-y-1/2 translate-x-1/2 rounded-full bg-purple-700 opacity-50 blur-full" />
 
             {/** Stripes */}
-            <div className="absolute bottom-0 right-2 top-0 w-2 bg-stripes pr-2" />
+            <div className="absolute bottom-0 right-1 top-0 w-2 bg-stripes pr-2" />
 
             {isAuthenticated ? <Profile /> : <SignIn />}
             <Hero />

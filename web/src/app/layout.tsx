@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${roboto.variable} ${baiJam.variable} overflow-x-hidden overflow-y-scroll bg-gray-900 font-sans text-gray-100`}
+        className={`${roboto.variable} ${baiJam.variable} scrollbar-track-black-700 overflow-x-hidden overflow-y-scroll bg-gray-900 font-sans text-gray-100 scrollbar-thin scrollbar-thumb-purple-800 scrollbar-thumb-rounded-md`}
       >
         <main className="flex">
           <div className="fixed flex h-[100vh]  w-[50%] flex-col items-start justify-between border-r border-white/10 bg-[url(../assets/bg-stars.svg)] bg-cover px-28 py-10">

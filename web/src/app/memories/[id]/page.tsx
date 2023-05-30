@@ -8,6 +8,7 @@ import dayjs from 'dayjs'
 import ptBr from 'dayjs/locale/pt-br'
 
 import { api } from '@/lib/api'
+import DeleteMemory from '@/components/DeleteMemory'
 
 dayjs.locale(ptBr)
 
@@ -27,13 +28,16 @@ export default async function ChosenMemory(request: any) {
   return (
     <>
       <div className="flex flex-1 flex-col gap-4 px-10 py-10">
-        <Link
-          href="/"
-          className="flex items-center gap-1 text-sm text-gray-200 hover:text-gray-100"
-        >
-          <ChevronLeft className="h-4 w-4" />
-          voltar à timeline
-        </Link>
+        <div className="flex justify-between">
+          <Link
+            href="/"
+            className="flex items-center gap-1 text-sm text-gray-200 hover:text-gray-100"
+          >
+            <ChevronLeft className="h-4 w-4" />
+            voltar à timeline
+          </Link>
+          <DeleteMemory memoryId={response.data.id} />
+        </div>
         <Image
           src={
             response.data.coverUrl

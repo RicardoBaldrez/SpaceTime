@@ -53,6 +53,9 @@ module.exports = {
           800: '#027435',
           900: '#025929',
         },
+        red: {
+          900: '#eb0e0e',
+        },
       },
 
       backgroundImage: {

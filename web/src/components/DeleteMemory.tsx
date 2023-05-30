@@ -34,7 +34,7 @@ export default function DeleteMemory({
   return (
     <>
       <Trash2
-        className="h-4 w-4 transition-colors duration-500 hover:cursor-pointer hover:text-purple-700"
+        className="h-4 w-4 transition-colors duration-500 hover:cursor-pointer hover:text-red-900"
         onClick={() => deletingMemory(memoryId)}
       />
     </>
